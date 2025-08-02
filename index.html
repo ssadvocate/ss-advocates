@@ -13,22 +13,22 @@
         }
 
         :root {
-            --primary-gold: #c9a961;
-            --secondary-gold: #d4af37;
-            --accent-gold: #f4d03f;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #141414;
-            --card-bg: #1a1a1a;
-            --border-color: #2a2a2a;
+            --primary-gold: #b8860b;
+            --secondary-gold: #daa520;
+            --accent-gold: #ffd700;
+            --dark-bg: #0f0f0f;
+            --darker-bg: #1a1a1a;
+            --card-bg: #252525;
+            --border-color: #333333;
             --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-muted: #808080;
-            --gradient-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
-            --gradient-gold: linear-gradient(135deg, #c9a961 0%, #f4d03f 100%);
-            --gradient-card: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 100%);
-            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --shadow-elevated: 0 10px 40px rgba(0, 0, 0, 0.5);
-            --shadow-gold: 0 0 30px rgba(201, 169, 97, 0.3);
+            --text-secondary: #cccccc;
+            --text-muted: #999999;
+            --gradient-primary: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #252525 100%);
+            --gradient-gold: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+            --gradient-card: linear-gradient(145deg, #252525 0%, #1a1a1a 100%);
+            --shadow-subtle: 0 2px 10px rgba(0, 0, 0, 0.3);
+            --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.4);
+            --shadow-gold: 0 0 20px rgba(184, 134, 11, 0.2);
         }
 
         html {
@@ -45,7 +45,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Advanced Background Animation */
+        /* Background Elements */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -64,16 +64,17 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 2px;
+            height: 2px;
             background: var(--primary-gold);
             border-radius: 50%;
-            opacity: 0.6;
-            animation: float-particles 10s linear infinite;
+            opacity: 0.4;
+            animation: float-particles 12s linear infinite;
         }
 
         @keyframes float-particles {
@@ -82,13 +83,13 @@
                 opacity: 0;
             }
             10% {
-                opacity: 1;
+                opacity: 0.4;
             }
             90% {
-                opacity: 1;
+                opacity: 0.4;
             }
             100% {
-                transform: translateY(-10px) translateX(100px);
+                transform: translateY(-10px) translateX(50px);
                 opacity: 0;
             }
         }
@@ -100,19 +101,19 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .header-wrapper.scrolled {
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(15, 15, 15, 0.98);
             box-shadow: var(--shadow-subtle);
         }
 
         .header {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -128,32 +129,31 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: var(--shadow-gold);
             transition: all 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         .logo-subtitle {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-top: -5px;
+            margin-top: -2px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
@@ -165,34 +165,32 @@
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             padding: 0.5rem 1rem;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
 
-        .nav-link::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-gold);
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
             transition: all 0.3s ease;
-            z-index: -1;
-            opacity: 0.1;
+            transform: translateX(-50%);
         }
 
-        .nav-link:hover::before {
-            left: 0;
+        .nav-link:hover::after {
+            width: 80%;
         }
 
         .nav-link:hover {
             color: var(--primary-gold);
-            transform: translateY(-2px);
+            background: rgba(184, 134, 11, 0.1);
         }
 
         .mobile-menu-toggle {
@@ -203,12 +201,12 @@
         }
 
         .hamburger-line {
-            width: 25px;
-            height: 3px;
+            width: 22px;
+            height: 2px;
             background: var(--primary-gold);
-            margin: 3px 0;
+            margin: 2px 0;
             transition: all 0.3s ease;
-            border-radius: 2px;
+            border-radius: 1px;
         }
 
         /* Hero Section */
@@ -220,60 +218,59 @@
             text-align: center;
             position: relative;
             padding: 0 2rem;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 700px;
             z-index: 10;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease 0.5s both;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            animation: fadeInUp 1s ease 0.7s both;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            animation: fadeInUp 1s ease 0.9s both;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease 0.7s both;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease 1.1s both;
+            animation: fadeInUp 1s ease 0.9s both;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
-            font-size: 1rem;
+            padding: 0.9rem 1.8rem;
+            font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -287,8 +284,8 @@
         }
 
         .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(201, 169, 97, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
         }
 
         .cta-secondary {
@@ -300,7 +297,7 @@
         .cta-secondary:hover {
             background: var(--primary-gold);
             color: var(--dark-bg);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         /* Main Content */
@@ -309,20 +306,20 @@
         }
 
         .section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
+            padding: 4rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 600;
             margin-bottom: 1rem;
             background: var(--gradient-gold);
@@ -335,102 +332,85 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
+            width: 60px;
+            height: 2px;
             background: var(--gradient-gold);
-            border-radius: 2px;
+            border-radius: 1px;
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1.6;
         }
 
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .service-card {
             background: var(--gradient-card);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, rgba(201, 169, 97, 0.1), transparent 30%);
-            animation: rotate 8s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-elevated);
             border-color: var(--primary-gold);
         }
 
         .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             display: block;
             transition: all 0.3s ease;
         }
 
         .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1);
         }
 
         .service-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-gold);
         }
 
         .service-description {
             color: var(--text-secondary);
             line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* Stats Section */
         .stats-section {
             background: var(--darker-bg);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            margin: 4rem 0;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
             border: 1px solid var(--border-color);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
             text-align: center;
         }
 
@@ -439,7 +419,7 @@
         }
 
         .stat-number {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
@@ -450,76 +430,62 @@
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         /* Blog Section */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .blog-card {
             background: var(--gradient-card);
-            border-radius: 20px;
+            border-radius: 12px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             border: 1px solid var(--border-color);
             position: relative;
-        }
-
-        .blog-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.1), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .blog-card:hover::before {
-            left: 100%;
+            cursor: pointer;
         }
 
         .blog-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-elevated);
             border-color: var(--primary-gold);
         }
 
         .blog-content {
-            padding: 2rem;
+            padding: 1.8rem;
         }
 
         .blog-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             line-height: 1.4;
         }
 
         .blog-description {
             color: var(--text-secondary);
             line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
         .blog-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.5rem;
             padding-top: 1rem;
             border-top: 1px solid var(--border-color);
         }
@@ -527,58 +493,47 @@
         .read-more {
             color: var(--primary-gold);
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
+        }
+
+        .blog-date {
+            color: var(--text-muted);
+            font-size: 0.8rem;
         }
 
         /* Profiles Section */
         .profiles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
         }
 
         .profile-link {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            padding: 2rem;
+            gap: 1.2rem;
+            padding: 1.5rem;
             background: var(--gradient-card);
-            border-radius: 20px;
+            border-radius: 12px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             border: 1px solid var(--border-color);
             position: relative;
-            overflow: hidden;
-        }
-
-        .profile-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.05), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .profile-link:hover::before {
-            left: 100%;
         }
 
         .profile-link:hover {
-            transform: translateX(10px);
+            transform: translateX(5px);
             border-color: var(--primary-gold);
             box-shadow: var(--shadow-subtle);
         }
 
         .profile-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary-gold);
             flex-shrink: 0;
         }
@@ -588,23 +543,23 @@
         }
 
         .profile-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             color: var(--text-primary);
         }
 
         .profile-description {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
 
         /* Contact Section */
         .contact-section {
             background: var(--darker-bg);
-            border-radius: 30px;
-            padding: 4rem 2rem;
+            border-radius: 16px;
+            padding: 3rem 2rem;
             text-align: center;
             border: 1px solid var(--border-color);
         }
@@ -612,20 +567,20 @@
         .contact-buttons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .contact-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.25rem 2.5rem;
-            font-size: 1.1rem;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -638,8 +593,8 @@
         }
 
         .contact-btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(201, 169, 97, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(184, 134, 11, 0.3);
         }
 
         .contact-btn-secondary {
@@ -651,46 +606,46 @@
         .contact-btn-secondary:hover {
             background: var(--primary-gold);
             color: var(--dark-bg);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         /* Footer */
         .footer {
             background: var(--darker-bg);
-            padding: 4rem 2rem 2rem;
+            padding: 3rem 2rem 1.5rem;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .footer-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-description {
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
@@ -703,13 +658,12 @@
 
         .footer-link:hover {
             color: var(--primary-gold);
-            transform: translateY(-2px);
         }
 
         .footer-copyright {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-top: 2rem;
+            font-size: 0.85rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--border-color);
         }
 
@@ -717,7 +671,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -725,21 +679,11 @@
             }
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
         /* Scroll Animation Classes */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
         .fade-in.visible {
@@ -749,8 +693,8 @@
 
         .slide-in-left {
             opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
         }
 
         .slide-in-left.visible {
@@ -760,13 +704,78 @@
 
         .slide-in-right {
             opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
         }
 
         .slide-in-right.visible {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        /* Blog Detail Modal */
+        .blog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 2rem;
+        }
+
+        .blog-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .blog-modal-content {
+            background: var(--gradient-card);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .blog-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .blog-modal-close:hover {
+            color: var(--primary-gold);
+        }
+
+        .blog-modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-modal-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         /* Mobile Responsive */
@@ -780,11 +789,11 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(10, 10, 10, 0.98);
+                background: rgba(15, 15, 15, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
+                padding: 1.5rem;
+                gap: 0.8rem;
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
@@ -803,7 +812,7 @@
             }
 
             .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
+                transform: rotate(45deg) translate(4px, 4px);
             }
 
             .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -811,12 +820,12 @@
             }
 
             .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
+                transform: rotate(-45deg) translate(5px, -5px);
             }
 
             .hero {
-                padding: 6rem 1rem 4rem;
-                min-height: 90vh;
+                padding: 5rem 1rem 3rem;
+                min-height: 85vh;
             }
 
             .hero-cta {
@@ -832,12 +841,12 @@
             .blog-grid,
             .profiles-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .contact-buttons {
@@ -848,7 +857,15 @@
 
             .footer-links {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
+            }
+
+            .blog-modal {
+                padding: 1rem;
+            }
+
+            .blog-modal-content {
+                padding: 1.5rem;
             }
         }
 
@@ -858,13 +875,13 @@
             }
 
             .logo-subtitle {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
             }
 
             .service-card,
             .blog-content,
             .profile-link {
-                padding: 1.5rem;
+                padding: 1.2rem;
             }
 
             .stats-grid {
@@ -872,55 +889,16 @@
             }
         }
 
-        /* High Performance Animations */
+        /* Performance Optimizations */
         .service-card,
         .blog-card,
         .profile-link,
         .contact-btn {
             will-change: transform;
         }
-
-        /* Loading Animation */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border-color);
-            border-top: 3px solid var(--primary-gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loader"></div>
-    </div>
-
     <!-- Background Elements -->
     <div class="bg-overlay"></div>
     <div class="particle-container" id="particleContainer"></div>
@@ -936,7 +914,8 @@
             <nav>
                 <ul class="nav-menu" id="navMenu">
                     <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#blog" class="nav-link">Insights</a></li>
+                    <li class="nav-item"><a href="#insights" class="nav-link">Insights</a></li>
+                    <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#profiles" class="nav-link">Profiles</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -1008,8 +987,12 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="section">
+        <section id="insights" class="section">
             <div class="stats-section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">Our Track Record</h2>
+                    <p class="section-subtitle">Proven excellence in legal services</p>
+                </div>
                 <div class="stats-grid">
                     <div class="stat-item slide-in-left">
                         <span class="stat-number" data-count="15">0</span>
@@ -1019,14 +1002,6 @@
                         <span class="stat-number" data-count="100">0</span>
                         <div class="stat-label">Client Satisfaction</div>
                     </div>
-                    <div class="stat-item slide-in-left">
-                        <span class="stat-number" data-count="500">0</span>
-                        <div class="stat-label">Cases Handled</div>
-                    </div>
-                    <div class="stat-item slide-in-right">
-                        <span class="stat-number" data-count="24">0</span>
-                        <div class="stat-label">Support Available</div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1034,12 +1009,12 @@
         <!-- Blog Section -->
         <section id="blog" class="section">
             <div class="section-header fade-in">
-                <h2 class="section-title">Legal Insights</h2>
+                <h2 class="section-title">Legal Blog</h2>
                 <p class="section-subtitle">Stay informed with our latest legal articles and expert analysis</p>
             </div>
             
             <div class="blog-grid">
-                <article class="blog-card fade-in">
+                <article class="blog-card fade-in" data-blog="fir-guide">
                     <div class="blog-content">
                         <h3 class="blog-title">5 Essential Steps to File an FIR in Maharashtra</h3>
                         <p class="blog-description">A comprehensive guide on how to effectively file an FIR in Maharashtra, understanding your rights, and ensuring proper legal protection throughout the process.</p>
@@ -1047,11 +1022,12 @@
                             <span class="read-more">
                                 Read More <span>→</span>
                             </span>
+                            <span class="blog-date">Dec 2024</span>
                         </div>
                     </div>
                 </article>
                 
-                <article class="blog-card fade-in">
+                <article class="blog-card fade-in" data-blog="corporate-compliance">
                     <div class="blog-content">
                         <h3 class="blog-title">Understanding Corporate Compliance in India</h3>
                         <p class="blog-description">Navigate the complex landscape of corporate compliance requirements, regulatory frameworks, and best practices for businesses in India.</p>
@@ -1059,11 +1035,12 @@
                             <span class="read-more">
                                 Read More <span>→</span>
                             </span>
+                            <span class="blog-date">Nov 2024</span>
                         </div>
                     </div>
                 </article>
                 
-                <article class="blog-card fade-in">
+                <article class="blog-card fade-in" data-blog="tax-planning">
                     <div class="blog-content">
                         <h3 class="blog-title">Tax Planning Strategies for 2025</h3>
                         <p class="blog-description">Discover effective tax planning strategies and legal methods to optimize your tax obligations while staying compliant with current regulations.</p>
@@ -1071,6 +1048,7 @@
                             <span class="read-more">
                                 Read More <span>→</span>
                             </span>
+                            <span class="blog-date">Jan 2025</span>
                         </div>
                     </div>
                 </article>
@@ -1152,7 +1130,8 @@
             
             <div class="footer-links">
                 <a href="#services" class="footer-link">Services</a>
-                <a href="#blog" class="footer-link">Legal Insights</a>
+                <a href="#insights" class="footer-link">Insights</a>
+                <a href="#blog" class="footer-link">Blog</a>
                 <a href="#profiles" class="footer-link">Our Profiles</a>
                 <a href="#contact" class="footer-link">Contact Us</a>
                 <a href="tel:+919175299953" class="footer-link">📞 +91 91752 99953</a>
@@ -1164,14 +1143,94 @@
         </div>
     </footer>
 
+    <!-- Blog Modal -->
+    <div class="blog-modal" id="blogModal">
+        <div class="blog-modal-content">
+            <button class="blog-modal-close" id="modalClose">&times;</button>
+            <h3 class="blog-modal-title" id="modalTitle"></h3>
+            <div class="blog-modal-text" id="modalText"></div>
+        </div>
+    </div>
+
     <script>
+        // Blog content data
+        const blogContent = {
+            'fir-guide': {
+                title: '5 Essential Steps to File an FIR in Maharashtra',
+                content: `
+                    <p>Filing a First Information Report (FIR) is a crucial step in the criminal justice process. Here's a comprehensive guide to help you understand the process in Maharashtra:</p>
+                    
+                    <h4>Step 1: Visit the Nearest Police Station</h4>
+                    <p>Go to the police station in whose jurisdiction the crime occurred. You have the right to file an FIR at any police station, but it's best to file it at the local station.</p>
+                    
+                    <h4>Step 2: Provide Complete Details</h4>
+                    <p>Give accurate and complete information about the incident, including date, time, location, and details of what happened. Include names and descriptions of suspects if known.</p>
+                    
+                    <h4>Step 3: Get FIR Copy</h4>
+                    <p>Ensure you receive a copy of the FIR with the FIR number. This is your legal right and serves as proof that you have filed a complaint.</p>
+                    
+                    <h4>Step 4: Follow Up</h4>
+                    <p>Stay in touch with the investigating officer and provide any additional information or evidence that may help in the investigation.</p>
+                    
+                    <h4>Step 5: Legal Assistance</h4>
+                    <p>Consider seeking legal advice, especially for serious offenses. A qualified advocate can guide you through the legal process and protect your rights.</p>
+                    
+                    <p><strong>Remember:</strong> Filing a false FIR is a punishable offense. Always provide truthful information to the police.</p>
+                `
+            },
+            'corporate-compliance': {
+                title: 'Understanding Corporate Compliance in India',
+                content: `
+                    <p>Corporate compliance is essential for businesses operating in India. Here's what you need to know:</p>
+                    
+                    <h4>Regulatory Framework</h4>
+                    <p>Indian companies must comply with various laws including the Companies Act 2013, SEBI regulations, labor laws, environmental laws, and tax regulations.</p>
+                    
+                    <h4>Key Compliance Areas</h4>
+                    <p><strong>Annual Filings:</strong> Companies must file annual returns, financial statements, and board resolutions with the Registrar of Companies.</p>
+                    <p><strong>Board Meetings:</strong> Regular board meetings and maintaining proper minutes are mandatory for all companies.</p>
+                    <p><strong>Audit Requirements:</strong> Companies above certain thresholds must undergo statutory audits by qualified chartered accountants.</p>
+                    
+                    <h4>Consequences of Non-Compliance</h4>
+                    <p>Non-compliance can result in penalties, prosecution of directors, and even striking off the company's name from the register.</p>
+                    
+                    <h4>Best Practices</h4>
+                    <p>• Maintain a compliance calendar<br>
+                    • Regular legal audits<br>
+                    • Proper documentation<br>
+                    • Professional legal assistance</p>
+                    
+                    <p>For comprehensive compliance management, consult with experienced corporate lawyers who can guide you through the complex regulatory landscape.</p>
+                `
+            },
+            'tax-planning': {
+                title: 'Tax Planning Strategies for 2025',
+                content: `
+                    <p>Effective tax planning is crucial for individuals and businesses. Here are key strategies for 2025:</p>
+                    
+                    <h4>For Individuals</h4>
+                    <p><strong>Section 80C Investments:</strong> Maximize deductions through ELSS, PPF, NSC, and life insurance premiums up to ₹1.5 lakh.</p>
+                    <p><strong>Health Insurance:</strong> Claim deductions under Section 80D for health insurance premiums for self and family.</p>
+                    <p><strong>Home Loan Benefits:</strong> Utilize deductions for home loan interest and principal repayment under Sections 24 and 80C.</p>
+                    
+                    <h4>For Businesses</h4>
+                    <p><strong>Expense Planning:</strong> Plan legitimate business expenses before the financial year ends to reduce taxable income.</p>
+                    <p><strong>Asset Purchases:</strong> Consider purchasing business assets to claim depreciation benefits.</p>
+                    <p><strong>Tax-efficient Structure:</strong> Choose the right business structure to optimize tax liability.</p>
+                    
+                    <h4>New Tax Regime Considerations</h4>
+                    <p>Evaluate whether the new tax regime with lower rates but fewer deductions suits your financial situation better than the old regime.</p>
+                    
+                    <h4>Advance Tax Planning</h4>
+                    <p>Pay advance tax in quarterly installments to avoid interest charges and better manage cash flow.</p>
+                    
+                    <p><strong>Important:</strong> Tax laws are complex and change frequently. Always consult with qualified tax professionals for personalized advice.</p>
+                `
+            }
+        };
+
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            // Hide loading overlay
-            setTimeout(() => {
-                document.getElementById('loadingOverlay').classList.add('hidden');
-            }, 1000);
-
             // Create floating particles
             createParticles();
             
@@ -1190,21 +1249,21 @@
             // Initialize counter animations
             initCounterAnimations();
             
-            // Initialize ripple effects
-            initRippleEffects();
+            // Initialize blog functionality
+            initBlogFunctionality();
         });
 
         // Create floating particles
         function createParticles() {
             const container = document.getElementById('particleContainer');
-            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            const particleCount = window.innerWidth < 768 ? 10 : 20;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 10 + 's';
-                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 8) + 's';
                 container.appendChild(particle);
             }
         }
@@ -1213,7 +1272,7 @@
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                rootMargin: '0px 0px -30px 0px'
             };
 
             const observer = new IntersectionObserver((entries) => {
@@ -1251,18 +1310,13 @@
         // Header scroll effect
         function initHeaderScroll() {
             const header = document.getElementById('header');
-            let lastScrollTop = 0;
 
             window.addEventListener('scroll', () => {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > 100) {
+                if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
-
-                lastScrollTop = scrollTop;
             });
         }
 
@@ -1274,7 +1328,7 @@
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
                         const headerHeight = document.getElementById('header').offsetHeight;
-                        const targetPosition = target.offsetTop - headerHeight - 20;
+                        const targetPosition = target.offsetTop - headerHeight - 10;
                         
                         window.scrollTo({
                             top: targetPosition,
@@ -1291,7 +1345,7 @@
             
             const animateCounter = (counter) => {
                 const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
+                const duration = 1500;
                 const increment = target / (duration / 16);
                 let current = 0;
                 
@@ -1304,8 +1358,6 @@
                     
                     if (target === 100) {
                         counter.textContent = Math.floor(current) + '%';
-                    } else if (target === 24) {
-                        counter.textContent = Math.floor(current) + '/7';
                     } else {
                         counter.textContent = Math.floor(current) + '+';
                     }
@@ -1326,100 +1378,61 @@
             });
         }
 
-        // Ripple effects
-        function initRippleEffects() {
-            document.querySelectorAll('.service-card, .blog-card, .profile-link, .contact-btn').forEach(element => {
-                element.addEventListener('click', function(e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
+        // Blog functionality
+        function initBlogFunctionality() {
+            const blogCards = document.querySelectorAll('.blog-card[data-blog]');
+            const modal = document.getElementById('blogModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalText = document.getElementById('modalText');
+            const modalClose = document.getElementById('modalClose');
+
+            blogCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const blogKey = card.getAttribute('data-blog');
+                    const content = blogContent[blogKey];
                     
-                    ripple.style.width = ripple.style.height = size + 'px';
-                    ripple.style.left = x + 'px';
-                    ripple.style.top = y + 'px';
-                    ripple.classList.add('ripple');
-                    
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
+                    if (content) {
+                        modalTitle.textContent = content.title;
+                        modalText.innerHTML = content.content;
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
                 });
             });
-        }
 
-        // Parallax effect for background elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const particles = document.querySelectorAll('.particle');
-            
-            particles.forEach((particle, index) => {
-                const speed = 0.2 + (index % 5) * 0.1;
-                particle.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-
-        // Add dynamic CSS for ripple effect
-        const rippleStyle = document.createElement('style');
-        rippleStyle.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(201, 169, 97, 0.3);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
+            // Close modal
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
                 }
-            }
-        `;
-        document.head.appendChild(rippleStyle);
+            });
 
-        // Performance optimization
-        let ticking = false;
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateAnimations);
-                ticking = true;
-            }
-        }
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
 
-        function updateAnimations() {
-            // Update any frame-based animations here
-            ticking = false;
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // Resize handler for responsive particles
         window.addEventListener('resize', () => {
             const container = document.getElementById('particleContainer');
             const currentParticles = container.children.length;
-            const targetParticles = window.innerWidth < 768 ? 15 : 30;
+            const targetParticles = window.innerWidth < 768 ? 10 : 20;
             
             if (currentParticles !== targetParticles) {
                 container.innerHTML = '';
                 createParticles();
             }
         });
-
-        // Service worker registration for PWA capabilities
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
     </script>
 </body>
 </html>
